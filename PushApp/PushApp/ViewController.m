@@ -52,7 +52,6 @@
     [_switchAll setOn:YES];
     [_switchJSON setOn:YES];
     [self loadAllUsersFromParse];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,13 +90,14 @@
     else {
         if(_switchJSON.isOn) {
             PFPush *push = [[PFPush alloc] init];
-            NSDictionary *data = @{
-                                   @"alert" : @"Tienes un nuevo recibo por parte de Iusacell, ¿Deseas pagarlo ahora?",
-                                   @"badge" : @"Increment",
-                                   @"sounds" : @"default",
-                                   @"category": @"BILL_RECEIVED_CATEGORY"
-                                   };
-
+            
+            NSString* jsonFormat = @"{\"companyId\":\"12344321424\",\"reference\":\"13579864\",\"aps\":{\"alert\":\"Tienes un nuevo recibo por pagar por parte de Iusacell, ¿Deseas pagarlo ahora?\",\"badge\":\"Increment\",\"sounds\":\"default\",\"category\":\"BILL_RECEIVED_CATEGORY\"}}";
+            NSData *jsonData = [jsonFormat dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *error;
+            NSDictionary *data = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                           options:NSJSONReadingAllowFragments
+                                                                             error:&error];
+            
             if (!_switchAll.isOn && _currentUserSelected != nil) {
                 // Make a query for specific user.
                 PFQuery *qe = [PFInstallation query];

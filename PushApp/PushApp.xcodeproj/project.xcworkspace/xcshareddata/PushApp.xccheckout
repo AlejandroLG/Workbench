@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>617EB0BE-E32F-4A11-B736-1DAF3A70F3C1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PushApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>65679D21CE38E91199FDBAE0E95C410870CAB812</key>
+		<string>https://github.com/AlejandroLG/Workbench.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PushApp/PushApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>65679D21CE38E91199FDBAE0E95C410870CAB812</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AlejandroLG/Workbench.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>65679D21CE38E91199FDBAE0E95C410870CAB812</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>65679D21CE38E91199FDBAE0E95C410870CAB812</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Workbench</string>
+		</dict>
+	</array>
+</dict>
+</plist>
