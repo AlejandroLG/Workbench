@@ -90,8 +90,8 @@
     else {
         if(_switchJSON.isOn) {
             PFPush *push = [[PFPush alloc] init];
+            NSString *jsonFormat = @"{\"aps\":{\"alert\":{\"body\":\"Tienes un nuevo recibo por pagar por parte de Iusacell, ¿Deseas pagarlo ahora?\",\"title\":\"Nuevo Recibo\"},\"category\":\"BILL_RECEIVED_CATEGORY\",\"badge\":\"Increment\",\"sound\":\"default\"},\"datosrecibo\":{\"descripcion\":\"Nuevo recibo\",\"idCompania\":\"12344321424\",\"idReferencia\":\"13579864\",\"nombreCompania\":\"Iusacell\",\"montoPagar\":\"1010.00\",\"diasRestantes\":\"26\"}}";
             
-            NSString* jsonFormat = @"{\"companyId\":\"12344321424\",\"reference\":\"13579864\",\"aps\":{\"alert\":\"Tienes un nuevo recibo por pagar por parte de Iusacell, ¿Deseas pagarlo ahora?\",\"badge\":\"Increment\",\"sounds\":\"default\",\"category\":\"BILL_RECEIVED_CATEGORY\"}}";
             NSData *jsonData = [jsonFormat dataUsingEncoding:NSUTF8StringEncoding];
             NSError *error;
             NSDictionary *data = [NSJSONSerialization JSONObjectWithData:jsonData

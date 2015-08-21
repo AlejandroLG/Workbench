@@ -482,6 +482,7 @@
 				650B55351B8397F200A7AD36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		650B55361B8397F200A7AD36 /* Build configuration list for PBXNativeTarget "PushAppTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				650B55381B8397F200A7AD36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
