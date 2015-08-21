@@ -90,13 +90,25 @@
     else {
         if(_switchJSON.isOn) {
             PFPush *push = [[PFPush alloc] init];
-            NSString *jsonFormat = @"{\"aps\":{\"alert\":{\"body\":\"Tienes un nuevo recibo por pagar por parte de Iusacell, ¿Deseas pagarlo ahora?\",\"title\":\"Nuevo Recibo\"},\"category\":\"BILL_RECEIVED_CATEGORY\",\"badge\":\"Increment\",\"sound\":\"default\"},\"datosrecibo\":{\"descripcion\":\"Nuevo recibo\",\"idCompania\":\"12344321424\",\"idReferencia\":\"13579864\",\"nombreCompania\":\"Iusacell\",\"montoPagar\":\"1010.00\",\"diasRestantes\":\"26\"}}";
             
-            NSData *jsonData = [jsonFormat dataUsingEncoding:NSUTF8StringEncoding];
-            NSError *error;
-            NSDictionary *data = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                           options:NSJSONReadingAllowFragments
-                                                                             error:&error];
+            NSDictionary *payload = @{
+                                      @"alert":@{
+                                              @"body":@"Tienes un nuevo recibo por pagar de Iusacell, ¿Deseas pagarlo ahora?",
+                                              @"title":@"Nuevo Recibo"
+                                              },
+                                      @"badge":@"Increment",
+                                      @"sound":@"default",
+                                      @"category":@"BILL_RECEIVED_CATEGORY",
+                                      @"datosrecibo":@{
+                                              @"descripcion":@"Nuevo recibo",
+                                              @"idCompania":@"12344321424",
+                                              @"idReferencia":@"13579864",
+                                              @"nombreCompania":@"Iusacell",
+                                              @"montoPagar":@"1010.00",
+                                              @"diasRestantes":@"26"
+                                              }
+                                      };
+                                              
             
             if (!_switchAll.isOn && _currentUserSelected != nil) {
                 // Make a query for specific user.
@@ -105,12 +117,12 @@
                 [push setQuery:qe];
             }
                 
-            [push setData:data];
+            [push setData:payload];
             [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded) {
-                    NSLog(@"The push has beeen sent successfully!\n%@", data);
+                    NSLog(@"The push has beeen sent successfully!\n%@", payload);
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                                    message:[NSString stringWithFormat:@"The push was sent:\n%@", data]
+                                                                    message:[NSString stringWithFormat:@"The push was sent:\n%@", payload]
                                                                    delegate:nil
                                                           cancelButtonTitle:@"Continue"
                                                           otherButtonTitles:nil, nil];
