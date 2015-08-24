@@ -16,6 +16,7 @@
 @property(nonatomic) NSInteger indexSelected;
 @property(nonatomic) float content;
 @property(nonatomic, strong) PFObject *currentUserSelected;
+@property(nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -60,6 +61,8 @@
 }
 
 - (IBAction)sendPushAction:(id)sender {
+    [self showActivityIndicator];
+    
     if(_txtVwMessage.text.length > 0) {
         PFPush *push = [[PFPush alloc] init];
 
@@ -72,6 +75,7 @@
         
         [push setMessage:_txtVwMessage.text];
         [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [self hideActivityIndicator];
             if(succeeded) {
                 NSLog(@"The push has beeen sent successfully!");
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
@@ -119,6 +123,7 @@
                 
             [push setData:payload];
             [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self hideActivityIndicator];
                 if(succeeded) {
                     NSLog(@"The push has beeen sent successfully!\n%@", payload);
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
@@ -135,6 +140,7 @@
             [_tblUsers reloadData];
         }
         else {
+            [self hideActivityIndicator];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
                                                             message:@"You must write a message to send a push"
                                                            delegate:nil
@@ -153,6 +159,7 @@
         [_txtVwMessage resignFirstResponder];
     }
     else {
+        [self showActivityIndicator];
         NSLog(@"Switch Off");
         [self showHideAllDevicesView:NO];
         [_txtVwMessage resignFirstResponder];
@@ -199,11 +206,17 @@
 - (void)loadAllUsersFromParse {
     // Get all current users from Parse
     PFQuery *query = [PFQuery queryWithClassName:@"Users"];
-    _currentUsers = [query findObjects];
-    _indexSelected = -1;
-    [_tblUsers setDelegate:self];
-    [_tblUsers setDataSource:self];
-    [_tblUsers reloadData];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [self hideActivityIndicator];
+        
+        if(objects.count > 0) {
+            _currentUsers = objects;
+        }
+        _indexSelected = -1;
+        [_tblUsers setDelegate:self];
+        [_tblUsers setDataSource:self];
+        [_tblUsers reloadData];
+    }];
 }
 
 - (void) showHideAllDevicesView:(BOOL)isAllDevicesShown {
@@ -298,6 +311,20 @@
     _currentUserSelected = [_currentUsers objectAtIndex:indexPath.row];
     NSLog(@"user: %@", [_currentUserSelected objectForKey:@"name"]);
 
+}
+
+#pragma mark - Activity indicator
+
+- (void)showActivityIndicator {
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [_activityIndicator setCenter:self.view.center];
+    [_activityIndicator startAnimating];
+    [self.view addSubview:_activityIndicator];
+}
+
+- (void)hideActivityIndicator {
+    [_activityIndicator stopAnimating];
+    [_activityIndicator removeFromSuperview];
 }
 
 @end
