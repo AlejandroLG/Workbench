@@ -105,8 +105,8 @@
                                       @"category":@"BILL_RECEIVED_CATEGORY",
                                       @"datosrecibo":@{
                                               @"descripcion":@"Nuevo recibo",
-                                              @"idCompania":@"12344321424",
-                                              @"idReferencia":@"13579864",
+                                              @"idCompania":@"00003",
+                                              @"idReferencia":@"13579864098234887871",
                                               @"nombreCompania":@"Iusacell",
                                               @"montoPagar":@"1010.00",
                                               @"diasRestantes":@"26"
