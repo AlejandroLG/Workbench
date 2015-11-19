@@ -97,18 +97,18 @@
             
             NSDictionary *payload = @{
                                       @"alert":@{
-                                              @"body":@"Tienes un nuevo recibo por pagar de Iusacell, ¿Deseas pagarlo ahora?",
+                                              @"body":@"Tienes un nuevo recibo por pagar de COBROS Y PAGOS, ¿Deseas pagar ahora?",
                                               @"title":@"Nuevo Recibo"
                                               },
                                       @"badge":@"Increment",
                                       @"sound":@"default",
                                       @"category":@"BILL_RECEIVED_CATEGORY",
-                                      @"datosrecibo":@{
+                                      @"billData":@{
                                               @"descripcion":@"Nuevo recibo",
-                                              @"idCompania":@"12344321424",
-                                              @"idReferencia":@"13579864",
-                                              @"nombreCompania":@"Iusacell",
-                                              @"montoPagar":@"1010.00",
+                                              @"idCompania":@"00060",
+                                              @"idReferencia":@"873812789349",
+                                              @"nombreCompania":@"CYPT",
+                                              @"montoPagar":@"1420.00",
                                               @"diasRestantes":@"26"
                                               }
                                       };
