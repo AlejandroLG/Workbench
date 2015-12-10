@@ -123,13 +123,13 @@
                                       };
              */
             NSDictionary *payload = @{
-                                      @"alert":@{
+                                        @"alert":@{
                                               @"body":@"Tienes un nuevo recibo de COBROS Y PAGOS (TEST), ¿Deseas pagar ahora?",
                                               @"title":@"Nuevo recibo"
                                               },
                                       @"badge":@"1",
                                       @"category":@"BILL_RECEIVED_CATEGORY",
-                                      @"datosrecibo":@{
+                                      @"billData":@{
                                               @"alias":@"Casa de mis papás",
                                               @"companyName":@"COBROS Y PAPAGOS (TEST)",
                                               @"concept":@"ABC123",
