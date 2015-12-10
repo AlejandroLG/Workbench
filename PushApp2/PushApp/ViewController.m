@@ -94,7 +94,7 @@
     else {
         if(_switchJSON.isOn) {
             PFPush *push = [[PFPush alloc] init];
-            
+            /*
             NSDictionary *payload = @{
                                       @"alert":@{
                                               @"body":@"Tienes un nuevo recibo de Nextel ¿Deseas pagar ahora?",
@@ -115,7 +115,34 @@
                                               @"montoPagar":@"1010.00",
                                               @"diasRestantes":@"26"
                                               }
+                                      
+                                      
+                                      
+                                      
+                                      
                                       };
+             */
+            NSDictionary *payload = @{
+                                      @"alert":@{
+                                              @"body":@"Tienes un nuevo recibo de COBROS Y PAGOS (TEST), ¿Deseas pagar ahora?",
+                                              @"title":@"Nuevo recibo"
+                                              },
+                                      @"badge":@"1",
+                                      @"category":@"BILL_RECEIVED_CATEGORY",
+                                      @"datosrecibo":@{
+                                              @"alias":@"Casa de mis papás",
+                                              @"companyName":@"COBROS Y PAPAGOS (TEST)",
+                                              @"concept":@"ABC123",
+                                              @"daysToPay":@"7",
+                                              @"expirationDate":@"26/11/2015",
+                                              @"notificationDate":@"26/11/2015",
+                                              @"operationAmount":@"1500.00",
+                                              @"reference":@"873812789349",
+                                              @"status":@"PO"
+                                              },
+                                      @"sound":@"default",
+                                      @"action":@"Nuevo pago"
+                };
                                               
             
             if (!_switchAll.isOn && _currentUserSelected != nil) {
